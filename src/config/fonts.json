@@ -1,0 +1,339 @@
+{
+  "localFonts": {
+    "chinese": {
+      "微软雅黑": {
+        "family": "Microsoft YaHei",
+        "aliases": ["微软雅黑", "Microsoft YaHei"],
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Light",
+            "weight": "300",
+            "style": "normal"
+          }
+        ]
+      },
+      "宋体": {
+        "family": "SimSun",
+        "aliases": ["宋体", "SimSun"],
+        "category": "serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "黑体": {
+        "family": "SimHei",
+        "aliases": ["黑体", "SimHei"],
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "楷体": {
+        "family": "KaiTi",
+        "aliases": ["楷体", "KaiTi"],
+        "category": "serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "仿宋": {
+        "family": "FangSong",
+        "aliases": ["仿宋", "FangSong"],
+        "category": "serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      }
+    },
+    "english": {
+      "Arial": {
+        "family": "Arial",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Arial Black": {
+        "family": "Arial Black",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          }
+        ]
+      },
+      "Comic Sans MS": {
+        "family": "Comic Sans MS",
+        "category": "cursive",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "Courier New": {
+        "family": "Courier New",
+        "category": "monospace",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "Georgia": {
+        "family": "Georgia",
+        "category": "serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Impact": {
+        "family": "Impact",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          }
+        ]
+      },
+      "Times New Roman": {
+        "family": "Times New Roman",
+        "category": "serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Trebuchet MS": {
+        "family": "Trebuchet MS",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Verdana": {
+        "family": "Verdana",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Helvetica": {
+        "family": "Helvetica",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      },
+      "Tahoma": {
+        "family": "Tahoma",
+        "category": "sans-serif",
+        "styles": [
+          {
+            "name": "Regular",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "name": "Bold",
+            "weight": "700",
+            "style": "normal"
+          },
+          {
+            "name": "Italic",
+            "weight": "400",
+            "style": "italic"
+          },
+          {
+            "name": "Bold Italic",
+            "weight": "700",
+            "style": "italic"
+          }
+        ]
+      }
+    }
+  },
+  "webFonts": {
+    "Fredoka One": {
+      "url": "https://fonts.googleapis.com/css2?family=Fredoka+One",
+      "category": "display"
+    },
+    "Hanalei Fill": {
+      "url": "https://fonts.font.im/css?family=Hanalei+Fill",
+      "category": "display"
+    },
+    "Ruslan Display": {
+      "url": "https://fonts.font.im/css?family=Ruslan+Display",
+      "category": "display"
+    },
+    "Lobster": {
+      "url": "https://fonts.font.im/css?family=Lobster",
+      "category": "display"
+    },
+    "Pacifico": {
+      "url": "https://fonts.font.im/css?family=Pacifico",
+      "category": "handwriting"
+    },
+    "Gloria Hallelujah": {
+      "url": "https://fonts.font.im/css?family=Gloria+Hallelujah",
+      "category": "handwriting"
+    },
+    "Permanent Marker": {
+      "url": "https://fonts.font.im/css?family=Permanent+Marker",
+      "category": "handwriting"
+    }
+  }
+} 

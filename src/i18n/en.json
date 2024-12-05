@@ -34,7 +34,8 @@
     "canvasBackground": "Canvas Background",
     "canvasSize": "Canvas Size",
     "drawCache": "Draw Cache",
-    "guideLine": "GuideLine"
+    "guideLine": "GuideLine",
+    "textEffect": "Text Effects"
   },
   "canvasSize": {
     "width": "Width",
@@ -174,5 +175,12 @@
     "rotate": "Rotate",
     "scale": "Scale",
     "size": "Size"
+  },
+  "textEffect": {
+    "color": "Color",
+    "stroke": "Stroke",
+    "shadow": "Shadow",
+    "offsetX": "Offset X",
+    "offsetY": "Offset Y"
   }
 }

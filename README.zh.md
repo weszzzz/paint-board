@@ -45,7 +45,7 @@ Link: [https://songlh.top/paint-board/](https://songlh.top/paint-board/)
   - 在选择模式下，可以通过点击绘画内容进行框选。点击手柄支持拖拽、缩放和旋转操作，提供灵活的编辑方式。
   - 选择图片支持多种滤镜配置。
   - 选择文字时，支持字体和样式设置。
-  - 所有绘制内容均支持图层设置，包括向上移动层级、向下移动层级、移动至顶层和移动至底层。
+  - 所有绘制内容均支持图层设置，包括向上移动层级、向下移动层、移动至顶层和移动至底层。
   - 所有绘制内容支持透明度配置。
 + 画板配置
   - 画板支持配置背景配置, 包括颜色, 背景图, 透明度。
@@ -80,11 +80,24 @@ Link: [https://songlh.top/paint-board/](https://songlh.top/paint-board/)
 </a>
 
 ## 本地启动
+
+### 方式一：手动执行
 ```
 git clone https://github.com/LHRUN/paint-board.git
 pnpm install
 pnpm dev
 ```
+
+### 方式二：使用启动脚本
+1. 下载 `start.bat` 和 `start.py`
+2. 将这两个文件放在项目根目录下（与 package.json 文件同级）
+3. 双击运行 `start.bat`
+
+注意：
+- 使用启动脚本前请确保已安装：
+  - [Python](https://www.python.org/) (3.6+)
+  - [Node.js](https://nodejs.org/)
+- 如果遇到网络问题，脚本会提供镜像源选择
 
 ### Docker 支持
 

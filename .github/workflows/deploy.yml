@@ -6,7 +6,7 @@ jobs:
   build:
     name: build and deploy
     env:
-      COMMIT_SECRET: ${{secrets.COMMIT_SECRET}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       USER_NAME: songlh
       USER_EMAIL: song.lhlh@gmail.com
       DOCKER_DIR: /app/dist
@@ -38,4 +38,4 @@ jobs:
           git add --all
           git commit -m "Deploy to GitHub Pages"
           git branch -M main
-          git push --force https://$COMMIT_SECRET@github.com/$GITHUB_REPOSITORY.git main:gh-pages
+          git push --force https://${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git main:gh-pages

@@ -22,6 +22,7 @@
     "multiColorType": "多色类型",
     "drawText": "文字内容",
     "fontFamily": "字体",
+    "fontSize": "字体大小",
     "shapeLinePointCount": "线段端点",
     "borderType": "边框类型",
     "borderStyle": "边框样式",
@@ -34,7 +35,11 @@
     "canvasBackground": "画板背景",
     "canvasSize": "画板尺寸",
     "drawCache": "绘制缓存",
-    "guideLine": "辅助线"
+    "guideLine": "辅助线",
+    "textEffect": "文字效果",
+    "strokeOpacity": "描边不透明度",
+    "shadowOpacity": "阴影不透明度",
+    "align": "对齐方式"
   },
   "canvasSize": {
     "width": "宽度",
@@ -67,7 +72,11 @@
     "image": "上传图片",
     "clean": "清除画板",
     "save": "保存为图片",
-    "fileList": "文件列表"
+    "fileList": "文件列表",
+    "centerCanvas": "画布居中",
+    "centerObject": "图层居中",
+    "centerObjectHorizontal": "水平居中",
+    "centerObjectVertical": "垂直居中"
   },
   "info": {
     "welecome": "欢迎Star",
@@ -89,7 +98,7 @@
       "line1": "在选择模式下，可以通过点击绘画内容进行框选",
       "line2": "点击手柄支持拖拽、缩放和旋转操作，提供灵活的编辑方式",
       "line3": "选择图片支持多种滤镜配置",
-      "line4": "选择文字时，支持字体设置",
+      "line4": "选择文字时，支持字体置",
       "line5": "所有绘制内容均支持图层设置，包括向上移动层级、向下移动层级、移动至顶层和移动至底层",
       "line6": "所有绘制内容支持透明度配置"
     },
@@ -174,5 +183,37 @@
     "rotate": "旋转",
     "scale": "缩放",
     "size": "尺寸"
+  },
+  "font": {
+    "system": "系统字体",
+    "hello": "HelloFont",
+    "web": "网页字体",
+    "requestPermission": "(点击授权)",
+    "favorite": "收藏",
+    "unfavorite": "取消收藏",
+    "refresh": "刷新字体列表",
+    "confirmUnfavorite": "确定要取消收藏这个字体吗？"
+  },
+  "textEffect": {
+    "color": "文字颜色",
+    "stroke": "描边效果",
+    "shadow": "阴影效果",
+    "offsetX": "水平偏移",
+    "offsetY": "垂直偏移",
+    "gradientRainbow": "彩虹渐变",
+    "gradientSunset": "日落渐变",
+    "gradientOcean": "海洋渐变",
+    "gradientFire": "火焰渐变",
+    "align": "文本对齐",
+    "alignLeft": "左对齐",
+    "alignCenter": "居中对齐", 
+    "alignRight": "右对齐",
+    "gradientColor": "渐变颜色",
+    "editGradient": "编辑渐变",
+    "addPreset": "添加预设",
+    "addColorStop": "添加渐变点",
+    "presetName": "预设名称",
+    "presetNamePlaceholder": "请输入预设名称",
+    "confirmDeletePreset": "确定要删除这个预设吗？"
   }
 }

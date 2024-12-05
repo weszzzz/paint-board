@@ -16,6 +16,19 @@ import {
   handleBackgroundImageWhenCanvasSizeChange
 } from '@/utils/common/background'
 
+// 添加尺寸模式枚举
+export enum SizeMode {
+  RATIO = 'ratio',
+  PIXEL = 'pixel'
+}
+
+// 添加尺寸预设枚举
+export enum SizePreset {
+  CUSTOM = 'custom',
+  PRESET_1 = 'preset_1', // 1242 x 1660
+  PRESET_2 = 'preset_2' // 1080 x 1440
+}
+
 interface BoardState {
   mode: string // operating mode
   drawType: string // draw type
@@ -28,6 +41,10 @@ interface BoardState {
   backgroundImageOpacity: number // canvas background Image opacity
   isObjectCaching: boolean // fabric objectCaching
   openGuideLine: boolean // does the guide line show
+  sizeMode: SizeMode
+  pixelWidth: number // 实际像素宽度
+  pixelHeight: number // 实际像素高度
+  sizePreset: SizePreset
 }
 
 interface BoardAction {
@@ -44,6 +61,9 @@ interface BoardAction {
   cleanBackgroundImage: () => void
   updateCacheState: () => void
   updateOpenGuideLine: () => void
+  updateSizeMode: (mode: SizeMode) => void
+  updatePixelSize: (width: number, height: number) => void
+  updateSizePreset: (preset: SizePreset) => void
 }
 
 const initLanguage = ['en', 'en-US', 'en-us'].includes(navigator.language)
@@ -64,6 +84,10 @@ const useBoardStore = create<BoardState & BoardAction>()(
       backgroundImageOpacity: 1,
       isObjectCaching: true,
       openGuideLine: false,
+      sizeMode: SizeMode.RATIO,
+      pixelWidth: 1920,
+      pixelHeight: 1080,
+      sizePreset: SizePreset.CUSTOM,
       updateMode: (mode) => {
         const oldMode = get().mode
         if (oldMode !== mode) {
@@ -129,21 +153,35 @@ const useBoardStore = create<BoardState & BoardAction>()(
         }
       },
       updateCanvasWidth: (width) => {
-        const oldWidth = get().canvasWidth
-        if (oldWidth !== width) {
-          set({
-            canvasWidth: width
-          })
-          paintBoard.updateCanvasWidth(width)
+        const { sizeMode, canvasWidth } = get()
+        if (canvasWidth !== width) {
+          if (sizeMode === SizeMode.RATIO) {
+            set({ canvasWidth: width })
+            paintBoard.updateCanvasWidth(width)
+          } else {
+            const containerWidth = window.innerWidth
+            set({
+              pixelWidth: Math.round(containerWidth * width),
+              canvasWidth: width
+            })
+            paintBoard.updateCanvasWidth(width)
+          }
         }
       },
       updateCanvasHeight: (height) => {
-        const oldHeight = get().canvasHeight
-        if (oldHeight !== height) {
-          set({
-            canvasHeight: height
-          })
-          paintBoard.updateCanvasHeight(height)
+        const { sizeMode, canvasHeight } = get()
+        if (canvasHeight !== height) {
+          if (sizeMode === SizeMode.RATIO) {
+            set({ canvasHeight: height })
+            paintBoard.updateCanvasHeight(height)
+          } else {
+            const containerHeight = window.innerHeight
+            set({
+              pixelHeight: Math.round(containerHeight * height),
+              canvasHeight: height
+            })
+            paintBoard.updateCanvasHeight(height)
+          }
         }
       },
       updateBackgroundColor: (color) => {
@@ -227,6 +265,65 @@ const useBoardStore = create<BoardState & BoardAction>()(
           openGuideLine: newOpenGuideLine
         })
         alignGuideLine.updateOpenState(newOpenGuideLine)
+      },
+      updateSizeMode: (mode) => {
+        const oldMode = get().sizeMode
+        if (oldMode !== mode) {
+          set({ sizeMode: mode })
+          // 切换模式时进行尺寸转换
+          if (mode === SizeMode.PIXEL) {
+            // 从比例转换为像素
+            const { canvasWidth, canvasHeight } = get()
+            const containerWidth = window.innerWidth
+            const containerHeight = window.innerHeight
+            set({
+              pixelWidth: Math.round(containerWidth * canvasWidth),
+              pixelHeight: Math.round(containerHeight * canvasHeight)
+            })
+          } else {
+            // 从像素转换为比例
+            const { pixelWidth, pixelHeight } = get()
+            const containerWidth = window.innerWidth
+            const containerHeight = window.innerHeight
+            set({
+              canvasWidth: pixelWidth / containerWidth,
+              canvasHeight: pixelHeight / containerHeight
+            })
+          }
+        }
+      },
+      updatePixelSize: (width, height) => {
+        const { pixelWidth, pixelHeight } = get()
+        if (pixelWidth !== width || pixelHeight !== height) {
+          set({
+            pixelWidth: width,
+            pixelHeight: height
+          })
+          // 更新比例值
+          const containerWidth = window.innerWidth
+          const containerHeight = window.innerHeight
+          paintBoard.updateCanvasWidth(width / containerWidth)
+          paintBoard.updateCanvasHeight(height / containerHeight)
+        }
+      },
+      updateSizePreset: (preset) => {
+        const { sizeMode } = get()
+        set({ sizePreset: preset })
+        if (preset !== SizePreset.CUSTOM) {
+          const presetSizes = {
+            [SizePreset.PRESET_1]: { width: 1242, height: 1660 },
+            [SizePreset.PRESET_2]: { width: 1080, height: 1440 }
+          }
+          const size = presetSizes[preset]
+          if (sizeMode === SizeMode.PIXEL) {
+            get().updatePixelSize(size.width, size.height)
+          } else {
+            const containerWidth = window.innerWidth
+            const containerHeight = window.innerHeight
+            get().updateCanvasWidth(size.width / containerWidth)
+            get().updateCanvasHeight(size.height / containerHeight)
+          }
+        }
       }
     }),
     {

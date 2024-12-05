@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "pnpm lint:script && pnpm lint:style",
     "lint:script": "eslint --ext .ts,.tsx --fix --quiet ./",
-    "lint:style": "stylelint --fix \"src/**/*.css\""
+    "lint:style": "stylelint --fix \"src/**/*.css\"",
+    "generate-fonts": "ts-node scripts/generateFontConfig.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.0.0",

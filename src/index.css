@@ -69,3 +69,45 @@ body {
 .radial-progress:hover::before {
   opacity: 0.5;
 }
+
+.favorite-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.2);
+  color: hsl(var(--wa));
+}
+
+.btn-ghost:hover .favorite-icon {
+  transform: none;
+}
+
+.btn.no-hover-effect:not(.btn-active):hover {
+  color: inherit;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* 渐变预设按钮样式 */
+.gradient-rainbow {
+  background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+}
+
+.gradient-sunset {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+}
+
+.gradient-ocean {
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+.gradient-fire {
+  background: linear-gradient(to right, #f12711, #f5af19);
+}

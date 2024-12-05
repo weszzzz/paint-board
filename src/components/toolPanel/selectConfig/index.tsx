@@ -8,6 +8,7 @@ import ImageFilterConfig from './imageFilterConfig'
 import FontStyleConfig from './fontStyleConfig'
 import SelectShapeConfig from './selectShapeConfig'
 import SelectFontFamilyConfig from './selectFontFamilyConfig'
+import AlignConfig from './alignConfig'
 
 const SelectConfig = () => {
   const [refreshCount, setRefresh] = useState(0) // refresh data
@@ -24,7 +25,12 @@ const SelectConfig = () => {
     <div className="form-control">
       <OpacityConfig refreshCount={refreshCount} />
 
-      {paintBoard.canvas?.getActiveObject() && <LayerConfig />}
+      {paintBoard.canvas?.getActiveObject() && (
+        <>
+          <LayerConfig />
+          <AlignConfig />
+        </>
+      )}
 
       {paintBoard.canvas?.getActiveObject()?._customType ===
         ELEMENT_CUSTOM_TYPE.IMAGE && <ImageFilterConfig />}

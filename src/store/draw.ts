@@ -12,6 +12,8 @@ import {
 import { paintBoard } from '@/utils/paintBoard'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { loadFavoriteFonts, saveFavoriteFonts } from '@/utils/common/fonts'
+import { TextAlign } from '@/utils/element/draw/text'
 
 interface DrawState {
   drawWidth: number // draw brush width
@@ -27,6 +29,18 @@ interface DrawState {
   multiColorType: string // 'col' | 'row' | 'circle'
   textFontFamily: string // current text drawing font
   fontStyles: string[] // ['bold', 'italic', 'underLine', 'lineThrough']
+  favoriteFonts: string[] // 新增收藏字体列表
+  textStroke: string // 描边颜色
+  textStrokeWidth: number // 描边宽度
+  textShadow: {
+    color: string // 阴影颜色
+    blur: number // 阴影模糊度
+    offsetX: number // 阴影X偏移
+    offsetY: number // 阴影Y偏移
+    opacity: number // 添加透明度属性
+  }
+  textColor: string // 字体颜色
+  textAlign: TextAlign // 文本对齐方式
 }
 
 interface DrawAction {
@@ -43,6 +57,13 @@ interface DrawAction {
   updateMultiColorType: (multiColorType: string) => void
   updateTextFontFamily: (fontFamily: string) => void
   updateFontStyles: (type: string) => void
+  toggleFavoriteFont: (font: string) => void // 新增切换收藏状态的方法
+  initFavoriteFonts: () => Promise<void>
+  updateTextStroke: (color: string) => void
+  updateTextStrokeWidth: (width: number) => void
+  updateTextShadow: (shadow: Partial<DrawState['textShadow']>) => void
+  updateTextColor: (color: string) => void
+  updateTextAlign: (align: TextAlign) => void
 }
 
 const useDrawStore = create<DrawState & DrawAction>()(
@@ -61,6 +82,18 @@ const useDrawStore = create<DrawState & DrawAction>()(
       multiColorType: MultiColorType.COL,
       textFontFamily: 'Georgia',
       fontStyles: [],
+      favoriteFonts: [], // 初始化收藏列表
+      textStroke: '#000000',
+      textStrokeWidth: 0,
+      textShadow: {
+        color: '#000000',
+        blur: 0,
+        offsetX: 0,
+        offsetY: 0,
+        opacity: 1
+      },
+      textColor: '#000000', // 默认黑色
+      textAlign: 'left', // 默认左对齐
       updateDrawWidth(drawWidth) {
         const oldDrawWidth = get().drawWidth
         if (oldDrawWidth !== drawWidth && paintBoard.canvas) {
@@ -165,7 +198,32 @@ const useDrawStore = create<DrawState & DrawAction>()(
         set({
           fontStyles
         })
-      }
+      },
+      toggleFavoriteFont: async (font) => {
+        const favoriteFonts = [...get().favoriteFonts]
+        const index = favoriteFonts.indexOf(font)
+        if (index !== -1) {
+          favoriteFonts.splice(index, 1)
+        } else {
+          favoriteFonts.push(font)
+        }
+        set({ favoriteFonts })
+        // 保存到 IndexedDB
+        await saveFavoriteFonts(favoriteFonts)
+      },
+      initFavoriteFonts: async () => {
+        // 从 IndexedDB 加载收藏的字体
+        const fonts = await loadFavoriteFonts()
+        set({ favoriteFonts: fonts })
+      },
+      updateTextStroke: (color) => set({ textStroke: color }),
+      updateTextStrokeWidth: (width) => set({ textStrokeWidth: width }),
+      updateTextShadow: (shadow) =>
+        set((state) => ({
+          textShadow: { ...state.textShadow, ...shadow }
+        })),
+      updateTextColor: (color) => set({ textColor: color }),
+      updateTextAlign: (align) => set({ textAlign: align })
     }),
     {
       name: 'PAINT-BOARD-DRAW-STORE'
